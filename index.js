@@ -4,7 +4,7 @@ var option;
 
 option = {
   title: {
-    text: 'Temperature Changing and Comparison between Inside Traffic Cabinet and Outside Air'
+    text: 'Temperature Changing'
   },
   tooltip: {
     trigger: 'axis'
