@@ -4,7 +4,7 @@ var option;
 
 option = {
   title: {
-    text: 'Temperature Changing in Traffic Cabinet'
+    text: 'Temperature Changing and Comparison between Inside Traffic Cabinet and Outside Air'
   },
   tooltip: {
     trigger: 'axis'
@@ -35,7 +35,7 @@ option = {
   },
   series: [
     {
-      name: 'Sunny 18 to 28',
+      name: 'Sunny 24 to 31 Inside Cabinet',
       type: 'line',
       data: [],
       markPoint: {
@@ -49,7 +49,7 @@ option = {
       }
     },
     {
-      name: 'Cloudy 18 to 28',
+      name: 'Sunny 24 to 31 Outside Air',
       type: 'line',
       data: [],
       markPoint: {
@@ -87,8 +87,8 @@ fetch('./data.json')
   .then(res => res.json())
   .then(cfg => {
     option.xAxis .data = cfg.times;
-    option.series[0].data = cfg.temps_20250529_sunny;
-    option.series[1].data = cfg.temps_20250528_cloudy;
+    option.series[0].data = cfg.temps_20250605_sunny_inside;
+    option.series[1].data = cfg.temps_20250605_sunny_outside;
     myChart.setOption(option);
   })
   .catch(console.error);
