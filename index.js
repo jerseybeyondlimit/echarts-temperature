@@ -4,12 +4,16 @@ var option;
 
 option = {
   title: {
-    text: 'Temperature Changing in Traffic Cabinet'
+    text: 'GPU Power in Different Model Size in 15 Minutes',
+    top: '1%',
+    left: 'center'
   },
   tooltip: {
     trigger: 'axis'
   },
-  legend: {},
+  legend: {
+    top: '5.5%'
+  },
   toolbox: {
     show: true,
     feature: {
@@ -30,12 +34,12 @@ option = {
   yAxis: {
     type: 'value',
     axisLabel: {
-      formatter: '{value} °C'
+      formatter: '{value} W'
     }
   },
   series: [
     {
-      name: 'Sunny 18 to 28',
+      name: 'Fusion 100*100 2 LiDAR',
       type: 'line',
       data: [],
       markPoint: {
@@ -49,7 +53,7 @@ option = {
       }
     },
     {
-      name: 'Cloudy 18 to 28',
+      name: 'Fusion 150*150 2 LiDAR',
       type: 'line',
       data: [],
       markPoint: {
@@ -79,7 +83,21 @@ option = {
           // ]
         ]
       }
-    }
+    },
+    {
+      name: 'Fusion 200*200 2 LiDAR',
+      type: 'line',
+      data: [],
+      markPoint: {
+        data: [
+          { type: 'max', name: 'Max' },
+          { type: 'min', name: 'Min' }
+        ]
+      },
+      markLine: {
+        data: [{ type: 'average', name: 'Avg' }]
+      }
+    },
   ]
 };
 
@@ -87,8 +105,9 @@ fetch('./data.json')
   .then(res => res.json())
   .then(cfg => {
     option.xAxis .data = cfg.times;
-    option.series[0].data = cfg.temps_20250529_sunny;
-    option.series[1].data = cfg.temps_20250528_cloudy;
+    option.series[0].data = cfg.fusion_100_100_2_lidar;
+    option.series[1].data = cfg.fusion_150_150_2_lidar;
+    option.series[2].data = cfg.fusion_200_200_2_lidar;
     myChart.setOption(option);
   })
   .catch(console.error);

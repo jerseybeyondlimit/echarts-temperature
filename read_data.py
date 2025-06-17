@@ -1,10 +1,10 @@
 import pandas as pd
 
 
-df = pd.read_csv('05281425_cloudy_18_28_dc_washed.csv', encoding='utf-8')
+df = pd.read_csv('gpu_power_changing/gpu_power_200_200_2025_06_17.csv', encoding='utf-8')
 
-time_list = df['时间'].astype(str).tolist()
-channel1_list = df['通道1'].tolist()
+time_list = df['Time'].astype(str).tolist()
+channel1_list = df['GPU Power (W)'].tolist()
 
 
 print(time_list)
